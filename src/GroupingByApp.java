@@ -5,6 +5,15 @@ import java.util.stream.Collectors;
 
 public class GroupingByApp {
     public static void main(String[] args) {
+        List<Employee> employeeList = getEmployeeList();
+
+        Map<String, List<Employee>> groupedEmployees = groupEmployeesByPostalCodePrefix(employeeList, 5);
+
+        groupedEmployees.forEach((postalCodePrefix, employees) -> {
+            System.out.println("Employees near each other with postal code prefix " + postalCodePrefix + ":");
+            employees.forEach(employee -> System.out.println(employee.getEmployeeName()));
+            System.out.println("--------------------");
+        });
 
     }
 
